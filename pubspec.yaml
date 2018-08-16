@@ -1,10 +1,10 @@
 name: built_html
+version: 0.1.0+1
 author: Jacob MacDonald <jakemac53@gmail.com>
 description: A Builder for injecting content hashes into html templates
 environment:
-  sdk: ">2.0.0 <3.0.0"
+  sdk: ">=2.0.0 <3.0.0"
 homepage: https://github.com/jakemac53/built_html
-version: 0.1.0
 dependencies:
   build: ^0.12.5
 dev_dependencies:
