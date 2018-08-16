@@ -1,5 +1,5 @@
 name: built_html
-author: jakemac53@gmail.com
+author: Jacob MacDonald <jakemac53@gmail.com>
 description: A Builder for injecting content hashes into html templates
 environment:
   sdk: ">2.0.0 <3.0.0"
