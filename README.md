@@ -17,18 +17,18 @@ Also, take a look at [example project](example/) for a working solution.
 
 Builds works as files changes, so when you run this buid twice, same output (even for timestamp etc.) might occur.
 
-### `timestamp`
-
-This command simply adds a current timestamp. Takes no parameters.
-
-```html
-<script src="main.dart.js?q={{timestamp}}"></script>
-```
-
 ### `digest <url>`
 
 This commands adds an id of asset from build. Takes one parameter, the url to the file.
 
 ```html
 <script src="main.dart.js?q={{digest main.dart.js}}"></script>
+```
+
+### `version`
+
+This command simply adds the version from your `package.yaml`. Takes no parameters.
+
+```html
+<script src="main.dart.js?q={{version}}"></script>
 ```

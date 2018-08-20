@@ -5,6 +5,7 @@
 import 'dart:async';
 
 import 'package:build/build.dart';
+import 'package:yaml/yaml.dart';
 
 HtmlTemplateBuilder createBuilder(BuilderOptions options) =>
     HtmlTemplateBuilder();
@@ -37,8 +38,31 @@ class HtmlTemplateBuilder extends Builder {
       var value = parts.last;
 
       switch (command) {
-        case 'timestamp':
-          output.write(DateTime.now().millisecondsSinceEpoch);
+        case 'version':
+          var pubspecAssetId = AssetId(buildStep.inputId.package, 'pubspec.yaml');
+
+          // Check if we can load the pubspec file.
+          if (!await buildStep.canRead(pubspecAssetId)) {
+            log.severe('Cannot read pubspec.yaml! Make sure it is included as a source in your target.');
+            return;
+          }
+
+          var pubspec = await buildStep.readAsString(pubspecAssetId);
+          var pubspecYaml = loadYaml(pubspec);
+
+          // Check if the yaml file have been parsed well.
+          if (pubspecYaml == null) {
+            log.severe('Cannot read pubspec.yaml! Make sure it is included as a source in your target.');
+            return;
+          }
+
+          // Check if the version is set.
+          if (pubspecYaml['version'] == null) {
+            log.severe('Cannot read version from pubspec.yaml!');
+            return;
+          }
+
+          output.write(pubspecYaml['version']);
           break;
 
         case 'digest':
@@ -47,7 +71,7 @@ class HtmlTemplateBuilder extends Builder {
 Invalid template tag ${match.group(0)}.
 Expected a command followed by a value, like {{command value}}.
 ''');
-            return null;
+            return;
           }
 
           var id = AssetId.resolve(value, from: buildStep.inputId);
