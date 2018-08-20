@@ -15,8 +15,6 @@ Also, take a look at [example project](example/) for a working solution.
 
 ## Commands
 
-Builds works as files changes, so when you run this buid twice, same output (even for timestamp etc.) might occur.
-
 ### `digest <url>`
 
 This commands adds an id of asset from build. Takes one parameter, the url to the file.
