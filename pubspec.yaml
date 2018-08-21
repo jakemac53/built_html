@@ -1,5 +1,5 @@
 name: built_html
-version: 0.2.0
+version: 0.1.1
 author: Jacob MacDonald <jakemac53@gmail.com>
 description: A Builder for injecting content hashes into html templates
 homepage: https://github.com/jakemac53/built_html
