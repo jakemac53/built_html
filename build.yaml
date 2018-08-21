@@ -1,14 +1,9 @@
 builders:
   built_html:
     import: 'package:built_html/builder.dart'
-    builder_factories:
-      - createBuilder
-    build_extensions:
-      '.template.html':
-        - '.html'
-    auto_apply: dependents
-    is_optional: false
+    builder_factories: ['createBuilder']
     build_to: cache
-    required_inputs:
-      - '.js'
-      - '.css'
+    build_extensions:
+      '.template.html': ['.html']
+    auto_apply: dependents
+    required_inputs: ['.js', '.css']

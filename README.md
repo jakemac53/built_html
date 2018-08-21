@@ -1,25 +1,32 @@
-A basic Builder for injecting content hashes into html templates. In the future
-other functionality may be added.
+A basic Builder for injecting content into html templates.
 
 ## Usage
 
-First, add a dependency on this package (probably a dev dependency):
+First, add a dependency on this package:
 
 ```yaml
 dev_dependencies:
-  built_html: ^0.1.0
+  built_html: ^0.2.0
 ```
 
-The next step is to rename your `*.html` file to a `*.template.html` file. This
-will be modified and copied to the original `*.html` location.
+The next step is to rename your `*.html` files to a `*.template.html` files. Those files will be modified and copied to the original `*.html` location.
 
-### Adding content digests
+Also, take a look at [example project](example/) for a working solution.
 
-To add a content digest to your html, you can use the `{{digest <uri>}}` syntax.
+## Commands
 
-For example, to create a cache busting uri for a javascript file, you can do the
-following:
+### `digest <url>`
+
+This command adds a content hash of an asset. Takes one parameter, the path to the file.
 
 ```html
 <script src="main.dart.js?q={{digest main.dart.js}}"></script>
+```
+
+### `version`
+
+This command simply adds the version from your `package.yaml`. Takes no parameters.
+
+```html
+<script src="main.dart.js?q={{version}}"></script>
 ```
