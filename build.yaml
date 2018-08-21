@@ -1,9 +1,17 @@
 builders:
   built_html:
     import: 'package:built_html/builder.dart'
-    builder_factories: ['createBuilder']
+    builder_factories: ['htmlBuilder']
     build_to: cache
     build_extensions:
       '.template.html': ['.html']
     auto_apply: dependents
     required_inputs: ['.js', '.css']
+    applies_builders: ["|template_cleanup"]
+post_process_builders:
+  template_cleanup:
+    import: "package:built_html/builder.dart"
+    builder_factory: templateCleanupBuilder
+    defaults:
+      release_options:
+        enabled: true
