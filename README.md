@@ -6,7 +6,7 @@ First, add a dependency on this package:
 
 ```yaml
 dev_dependencies:
-  built_html: ^0.2.0
+  built_html: ^0.1.0
 ```
 
 The next step is to rename your `*.html` files to a `*.template.html` files. Those files will be modified and copied to the original `*.html` location.
