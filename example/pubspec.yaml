@@ -5,8 +5,6 @@ description: Example to build *.html files from *.template.html source.
 environment:
   sdk: '>=2.0.0 <3.0.0'
 
-dependencies:
-
 dev_dependencies:
   build_runner: ^0.10.1
   build_web_compilers: ^0.4.2
