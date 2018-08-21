@@ -9,8 +9,8 @@ environment:
 
 dependencies:
   build: ^0.12.5
+  yaml: ^2.1.15
 
 dev_dependencies:
   build_test: ^0.10.0
   test: ^1.0.0
-  yaml: ^2.1.15

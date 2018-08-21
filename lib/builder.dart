@@ -18,7 +18,6 @@ class HtmlTemplateBuilder extends Builder {
 
   @override
   Future build(BuildStep buildStep) async {
-    // Print anything in between the last and the current match.
     var content = await buildStep.readAsString(buildStep.inputId);
 
     var matches = _regex.allMatches(content);
@@ -84,10 +83,8 @@ Expected a command followed by a value, like {{command value}}.
       lastEnd = match.end;
     }
 
-    // Print the rest of the file.
     output.write(content.substring(lastEnd, content.length));
 
-    // Create new (built) file.
     await buildStep.writeAsString(
       buildStep.inputId.changeExtension('').changeExtension('.html'),
       output.toString(),

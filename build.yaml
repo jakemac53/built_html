@@ -6,6 +6,4 @@ builders:
     build_extensions:
       '.template.html': ['.html']
     auto_apply: dependents
-    required_inputs:
-    - '.js'
-    - '.css'
+    required_inputs: ['.js', '.css']
