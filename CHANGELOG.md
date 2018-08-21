@@ -1,6 +1,20 @@
+## 0.1.2
+
+Clean up `.template.html` files by default in release mode. To disable you can
+configure the builder in your build.yaml:
+
+```yaml
+targets:
+  $default:
+    builders:
+      built_html|template_cleanup:
+        release_options:
+          enabled: false
+```
+
 ## 0.1.1
 
-Add support of `version` command. 
+Add support of `version` command.
 
 ## 0.1.0+1
 

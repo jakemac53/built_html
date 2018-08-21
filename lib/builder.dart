@@ -7,8 +7,12 @@ import 'dart:async';
 import 'package:build/build.dart';
 import 'package:yaml/yaml.dart';
 
-HtmlTemplateBuilder createBuilder(BuilderOptions options) =>
+HtmlTemplateBuilder htmlBuilder(BuilderOptions options) =>
     HtmlTemplateBuilder();
+
+PostProcessBuilder templateCleanupBuilder(BuilderOptions options) =>
+    FileDeletingBuilder(['.template.html'],
+        isEnabled: options.config['enabled'] as bool ?? false);
 
 class HtmlTemplateBuilder extends Builder {
   @override
@@ -38,11 +42,13 @@ class HtmlTemplateBuilder extends Builder {
 
       switch (command) {
         case 'version':
-          var pubspecAssetId = AssetId(buildStep.inputId.package, 'pubspec.yaml');
+          var pubspecAssetId =
+              AssetId(buildStep.inputId.package, 'pubspec.yaml');
 
           // Check if we can load the pubspec file.
           if (!await buildStep.canRead(pubspecAssetId)) {
-            log.severe('Cannot read pubspec.yaml! Make sure it is included as a source in your target.');
+            log.severe(
+                'Cannot read pubspec.yaml! Make sure it is included as a source in your target.');
             return;
           }
 
@@ -51,7 +57,8 @@ class HtmlTemplateBuilder extends Builder {
 
           // Check if the yaml file have been parsed well.
           if (pubspecYaml == null) {
-            log.severe('Cannot read pubspec.yaml! Make sure it is included as a source in your target.');
+            log.severe(
+                'Cannot read pubspec.yaml! Make sure it is included as a source in your target.');
             return;
           }
 
