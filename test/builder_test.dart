@@ -11,7 +11,7 @@ main() {
 ''',
     }, outputs: {
       'a|index.html': '''
-<p>8a549f330bf0391893944744bac4d33a</p>
+<p>9e43ec54624795b34b4dd9ee60ffe652</p>
 ''',
     });
   });
