@@ -1,3 +1,7 @@
+## 0.1.3
+
+Upgrade dependency for `build` to `^1.0.0`.
+
 ## 0.1.2
 
 Clean up `.template.html` files by default in release mode. To disable you can
