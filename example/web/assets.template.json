@@ -1,0 +1,4 @@
+{
+  "js": "{{digest scripts.js}}",
+  "css": "{{digest styles.css}}"
+}
