@@ -1,7 +1,7 @@
 name: built_html
-version: 0.1.3
+version: 0.1.4
 author: Jacob MacDonald <jakemac53@gmail.com>
-description: A Builder for injecting content hashes into html templates
+description: A Builder for injecting content hashes into html templates or json files
 homepage: https://github.com/jakemac53/built_html
 
 environment:

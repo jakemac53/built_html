@@ -1,3 +1,7 @@
+## 0.1.4
+
+Add support for `.template.json` files
+
 ## 0.1.3
 
 Upgrade dependency for `build` to `^1.0.0`.

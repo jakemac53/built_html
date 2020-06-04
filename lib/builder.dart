@@ -11,13 +11,14 @@ HtmlTemplateBuilder htmlBuilder(BuilderOptions options) =>
     HtmlTemplateBuilder();
 
 PostProcessBuilder templateCleanupBuilder(BuilderOptions options) =>
-    FileDeletingBuilder(['.template.html'],
+    FileDeletingBuilder(['.template.html', '.template.json'],
         isEnabled: options.config['enabled'] as bool ?? false);
 
 class HtmlTemplateBuilder extends Builder {
   @override
   final buildExtensions = {
-    '.template.html': ['.html']
+    '.template.html': ['.html'],
+    '.template.json': ['.json']
   };
 
   @override
@@ -93,7 +94,7 @@ Expected a command followed by a value, like {{command value}}.
     output.write(content.substring(lastEnd, content.length));
 
     await buildStep.writeAsString(
-      buildStep.inputId.changeExtension('').changeExtension('.html'),
+      buildStep.inputId.changeExtension('').changeExtension(buildStep.inputId.extension),
       output.toString(),
     );
   }
