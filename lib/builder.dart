@@ -12,7 +12,7 @@ HtmlTemplateBuilder htmlBuilder(BuilderOptions options) =>
 
 PostProcessBuilder templateCleanupBuilder(BuilderOptions options) =>
     FileDeletingBuilder(['.template.html', '.template.json'],
-        isEnabled: options.config['enabled'] as bool ?? false);
+        isEnabled: (options.config['enabled'] ?? false) as bool);
 
 class HtmlTemplateBuilder extends Builder {
   @override
@@ -31,7 +31,7 @@ class HtmlTemplateBuilder extends Builder {
 
     for (var match in matches) {
       output.write(content.substring(lastEnd, match.start));
-      var group = match.group(0);
+      var group = match.group(0)!;
 
       // Remove the braces.
       group = group.substring(2, group.length - 2).trim();
@@ -73,7 +73,7 @@ class HtmlTemplateBuilder extends Builder {
           break;
 
         case 'digest':
-          if (value?.isEmpty ?? true) {
+          if (value.isEmpty) {
             log.severe('''
 Invalid template tag ${match.group(0)}.
 Expected a command followed by a value, like {{command value}}.
@@ -81,7 +81,7 @@ Expected a command followed by a value, like {{command value}}.
             return;
           }
 
-          var id = AssetId.resolve(value, from: buildStep.inputId);
+          var id = AssetId.resolve(Uri.parse(value), from: buildStep.inputId);
           output.write(await buildStep.digest(id));
           break;
         default:
@@ -94,7 +94,9 @@ Expected a command followed by a value, like {{command value}}.
     output.write(content.substring(lastEnd, content.length));
 
     await buildStep.writeAsString(
-      buildStep.inputId.changeExtension('').changeExtension(buildStep.inputId.extension),
+      buildStep.inputId
+          .changeExtension('')
+          .changeExtension(buildStep.inputId.extension),
       output.toString(),
     );
   }
