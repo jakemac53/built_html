@@ -4,9 +4,8 @@ A basic Builder for injecting content into html and json templates.
 
 First, add a dependency on this package:
 
-```yaml
-dev_dependencies:
-  built_html: ^0.1.0
+```bash
+$ pub add --dev built_html
 ```
 
 The next step is to rename your `*.html` or `*.json` files to a `*.template.html` or `*.template.json` files. Those files will be modified and copied to the original location.
