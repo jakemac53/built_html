@@ -16,3 +16,6 @@ jobs:
     with:
       # Protected github deployment environment, requires approval to publish.
       environment: pub.dev
+    permissions:
+      id-token: write
+      pull-requests: write
