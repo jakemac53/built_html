@@ -11,7 +11,7 @@ on:
 
 jobs:
   publish:
-    if: ${{ github.repository_owner == 'jakemaca53' }}
+    if: ${{ github.repository_owner == 'jakemac53' }}
     uses: dart-lang/ecosystem/.github/workflows/publish.yaml@main
     with:
       # Protected github deployment environment, requires approval to publish.
