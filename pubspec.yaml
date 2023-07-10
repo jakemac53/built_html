@@ -1,5 +1,5 @@
 name: built_html
-version: 0.2.1
+version: 0.2.1-wip
 description: A Builder for injecting content hashes into html templates or json files
 homepage: https://github.com/jakemac53/built_html
 
