@@ -14,4 +14,4 @@ post_process_builders:
     builder_factory: templateCleanupBuilder
     defaults:
       release_options:
-        enabled: true
+        enabled: false
